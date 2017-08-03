@@ -1,6 +1,6 @@
 # Readme
 
-It is recomended to install most of all Python packages provided by [Anaconda](https://www.continuum.io/downloads). This includes Numba which will acceleted your calculations. The section below provides some mathematical aspects for this code. Aditionaly, to run this code script properly, you will need:
+It is recomended to install most of all Python packages provided by [Anaconda](https://www.continuum.io/downloads). This includes Numba which will accelete your calculations. The section below provides some mathematical aspects for this code. Aditionaly, to run this code script properly, you will need:
 
 - [Healpy](https://anaconda.org/conda-forge/healpy)
 
