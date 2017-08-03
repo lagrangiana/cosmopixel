@@ -17,7 +17,7 @@ from numba import jit
 import numpy as np
 import warnings
 
-get_ipython().magic('matplotlib inline')
+# get_ipython().magic('matplotlib inline')
 warnings.filterwarnings('ignore')
 
 ################################################################
