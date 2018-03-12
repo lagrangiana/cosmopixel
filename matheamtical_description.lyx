@@ -1,0 +1,567 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "md-charter" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "Temperature fluctuations on Pixel in FRLW"
+\pdf_author "Renan Alves de Oliveira"
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Temperature fluctuations on Pixel in FRLW
+\end_layout
+
+\begin_layout Author
+Renan Alves de Oliveira
+\begin_inset Newline newline
+\end_inset
+
+Thiago dos Santos Pereira
+\end_layout
+
+\begin_layout Date
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+For this work, we are interested in large scale effects which is dominated
+ by the Sachs Wolfe effect: 
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\Delta\mathrm{T}}{\mathrm{T}}\left(\mathbf{r}\right) & = & \frac{1}{3}\Phi\left(\mathbf{r}\right),
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\frac{\Delta\mathrm{T}}{\mathrm{T}}$
+\end_inset
+
+ is the temperature fluctuations evaluated at 
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Phi\left(\mathbf{r}\right)$
+\end_inset
+
+ is the gravitational potential.
+ Using
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\Delta\mathrm{T}}{\mathrm{T}}\left(\mathbf{r}\right) & = & \frac{1}{3\left(2\pi\right)^{3}}\int\mathrm{d^{3}}\mathbf{k}e^{i\mathbf{k}\cdot\mathbf{r}}\Phi\left(\mathbf{k}\right),
+\end{eqnarray*}
+
+\end_inset
+
+ let us suppose that this system is embedded in a box, with volume 
+\begin_inset Formula $V$
+\end_inset
+
+, side 
+\begin_inset Formula $L$
+\end_inset
+
+, and periodicity 
+\begin_inset Formula 
+\begin{eqnarray*}
+\Phi\left(\mathbf{r}\right) & = & \Phi\left(\mathbf{r}+\mathbf{L}\right)=\Phi\left(\mathbf{r}+L\hat{\mathbf{x}}\right)=\Phi\left(\mathbf{r}+L\hat{\mathbf{y}}\right)=\Phi\left(\mathbf{r}+L\hat{\mathbf{z}}\right).
+\end{eqnarray*}
+
+\end_inset
+
+Plugging this in the Fourier transform and comparing terms:
+\begin_inset Formula 
+\begin{eqnarray*}
+e^{i\mathbf{k}\cdot\mathbf{r}} & = & e^{i\mathbf{k}\cdot\left(\mathbf{r}+L\hat{\mathbf{x}}\right)}\Rightarrow e^{iL_{x}k_{x}}=1,
+\end{eqnarray*}
+
+\end_inset
+
+and doing the same for 
+\begin_inset Formula $k_{y}$
+\end_inset
+
+ and 
+\begin_inset Formula $k_{z}$
+\end_inset
+
+, we have
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{k} & = & \frac{2\pi}{L}\left(\mathbf{n}_{x}+\mathbf{n}_{y}+\mathbf{n}_{z}\right).
+\end{eqnarray*}
+
+\end_inset
+
+We will use a discretization of the Fourier space.
+ Let us rewrite the Fourier transform as
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\Delta\mathrm{T}}{\mathrm{T}}\left(\mathbf{r}\right) & = & \frac{1}{3V}\sum_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{r}}\Phi\left(\mathbf{k}\right)\Rightarrow\frac{\Delta\tilde{\mathrm{T}}}{\tilde{\mathrm{T}}}\left(\mathbf{r}\right)=\sum_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{r}}\Phi\left(\mathbf{k}\right).
+\end{eqnarray*}
+
+\end_inset
+
+For a homogeneous distribution,
+\begin_inset Formula 
+\begin{eqnarray*}
+\left\langle \Phi\left(\mathbf{k}\right)\Phi^{*}\left(\mathbf{q}\right)\right\rangle  & = & P\left(\mathbf{k}\right)\delta\left(\mathbf{k}-\mathbf{q}\right),
+\end{eqnarray*}
+
+\end_inset
+
+however, for a Gaussian variables 
+\begin_inset Formula $\phi\left(\mathbf{k}\right)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\left\langle \phi\left(\mathbf{k}\right)\phi^{*}\left(\mathbf{q}\right)\right\rangle  & = & \delta\left(\mathbf{k}-\mathbf{q}\right).
+\end{eqnarray*}
+
+\end_inset
+
+Let us assume that
+\begin_inset Formula 
+\begin{eqnarray*}
+\phi\left(\mathbf{k}\right) & \equiv & \frac{\Phi\left(\mathbf{k}\right)}{\sqrt{P\left(\mathbf{k}\right)}}\Rightarrow\Phi\left(\mathbf{k}\right)=\phi\left(\mathbf{k}\right)\sqrt{P\left(\mathbf{k}\right)}.
+\end{eqnarray*}
+
+\end_inset
+
+The function 
+\begin_inset Formula $\Delta\mathrm{T}/\mathrm{T}$
+\end_inset
+
+ is a real function, for our sum be a real function as well we should impose
+ that
+\begin_inset Formula 
+\begin{eqnarray*}
+\Phi\left(\mathbf{k}\right) & = & \Phi^{*}\left(-\mathbf{k}\right).
+\end{eqnarray*}
+
+\end_inset
+
+Let us break our sum in two hemispheres using the parity condition above
+ using 
+\begin_inset Formula $\left(\theta_{k},\phi_{k}\right)\rightarrow\left(\pi-\theta_{k},\pi+\phi_{k}\right)$
+\end_inset
+
+ as
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\Delta\tilde{\mathrm{T}}}{\tilde{\mathrm{T}}}\left(\mathbf{r}\right) & = & \sum_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{r}}\Phi\left(\mathbf{k}\right)+\sum_{-\mathbf{k}}e^{-i\mathbf{k}\cdot\mathbf{r}}\Phi\left(-\mathbf{k}\right),\\
+ & = & \sum_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{r}}\Phi\left(\mathbf{k}\right)+\sum_{-\mathbf{k}}e^{-i\mathbf{k}\cdot\mathbf{r}}\Phi^{*}\left(\mathbf{k}\right),\\
+ & = & \sum_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{r}}\Phi\left(\mathbf{k}\right)+e^{-i\mathbf{k}\cdot\mathbf{r}}\Phi^{*}\left(\mathbf{k}\right).
+\end{eqnarray*}
+
+\end_inset
+
+Using the redefinition of the Power Spectrum, and specifically for this
+ case, 
+\begin_inset Formula $P\left(\mathbf{k}\right)=P\left(k\right)$
+\end_inset
+
+ leading that 
+\begin_inset Formula $\sqrt{P\left(\mathbf{k}\right)}$
+\end_inset
+
+ is already a real function, however
+\begin_inset Formula 
+\begin{eqnarray*}
+\phi\left(\mathbf{k}\right) & = & \phi^{R}\left(\mathbf{k}\right)+i\phi^{I}\left(\mathbf{k}\right).
+\end{eqnarray*}
+
+\end_inset
+
+Plugging the results above in the discretized Fourier transform:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\Delta\tilde{\mathrm{T}}}{\tilde{\mathrm{T}}}\left(\mathbf{r}\right) & = & \sum_{\mathbf{k}}\sqrt{P\left(\mathbf{k}\right)}\left\{ e^{i\mathbf{k}\cdot\mathbf{r}}\left[\phi^{R}\left(\mathbf{k}\right)+i\phi^{I}\left(\mathbf{k}\right)\right]+e^{-i\mathbf{k}\cdot\mathbf{r}}\left[\phi^{R}\left(\mathbf{k}\right)-i\phi^{I}\left(\mathbf{k}\right)\right]\right\} ,
+\end{eqnarray*}
+
+\end_inset
+
+leading to
+\begin_inset Formula 
+\[
+\boxed{\frac{\Delta\tilde{\mathrm{T}}}{\tilde{\mathrm{T}}}\left(\mathbf{r}\right)=2\sum_{\mathbf{k}}\sqrt{P\left(\mathbf{k}\right)}\left[\cos\left(\mathbf{k}\cdot\mathbf{r}\right)\phi^{R}\left(\mathbf{k}\right)-\sin\left(\mathbf{k}\cdot\mathbf{r}\right)\phi^{I}\left(\mathbf{k}\right)\right].}
+\]
+
+\end_inset
+
+Using 
+\begin_inset Formula ${\bf k}$
+\end_inset
+
+, and defining
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{n} & \equiv & \mathbf{n}_{x}+\mathbf{n}_{y}+\mathbf{n}_{z},
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{n}\in\mathbb{Z}$
+\end_inset
+
+, and
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{k} & = & \frac{2\pi}{L}\mathbf{n}\Rightarrow k=\frac{2\pi}{L}n.
+\end{eqnarray*}
+
+\end_inset
+
+Let
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{r} & = & R\left(\sin\theta\cos\phi\hat{\mathbf{x}}+\sin\theta\sin\phi\hat{\mathbf{y}}+\cos\theta\hat{\mathbf{z}}\right),
+\end{eqnarray*}
+
+\end_inset
+
+and 
+\begin_inset Formula $\mathbf{n}=n\left(\sin\theta_{n}\cos\phi_{n}\hat{\mathbf{x}}+\sin\theta_{n}\sin\phi_{n}\hat{\mathbf{y}}+\cos\theta_{n}\hat{\mathbf{z}}\right)$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{k}\cdot\mathbf{r} & = & 2\pi n\frac{R}{L}\cos\gamma,
+\end{eqnarray*}
+
+\end_inset
+
+where
+\begin_inset Formula 
+\begin{eqnarray*}
+\cos\gamma & = & \cos\theta\cos\theta_{n}+\sin\theta\sin\theta_{n}\cos\left(\phi-\phi_{n}\right),
+\end{eqnarray*}
+
+\end_inset
+
+ and
+\begin_inset Formula 
+\begin{eqnarray*}
+\theta_{n} & = & \arccos\left(\frac{n_{z}}{n}\right),\qquad\phi_{n}=\arctan\left(\frac{n_{y}}{n_{x}}\right).
+\end{eqnarray*}
+
+\end_inset
+
+We can rewrite the equation for the variation of the temperature as
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\Delta\tilde{\mathrm{T}}}{\tilde{\mathrm{T}}}\left(\mathbf{r}\right) & = & 2\sum_{\mathbf{k}}\sqrt{P\left(\mathbf{k}\right)}\left[\cos\left(2\pi n\frac{R}{L}\cos\gamma\right)\phi^{R}\left(\mathbf{k}\right)-\sin\left(2\pi n\frac{R}{L}\cos\gamma\right)\phi^{I}\left(\mathbf{k}\right)\right].
+\end{eqnarray*}
+
+\end_inset
+
+To speed up this numerical code, we can evaluate all possible norms in terms
+ of the first octant, and we do not take care of the terms of the south
+ hemisphere below 
+\begin_inset Formula $k_{z}$
+\end_inset
+
+ since we'd used the parity relation.
+ Also, we can map all the other points using only the first octant:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ocatant
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Relationship
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cos\gamma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+I
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\theta,\phi\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ensuremath{\cos\theta\cos\theta_{k}+\sin\theta\sin\theta_{k}\cos\left(\phi-\phi_{k}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+II
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ensuremath{\left(\theta,\pi-\phi\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ensuremath{\cos\theta\cos\theta_{k}-\sin\theta\sin\theta_{k}\cos\left(\phi+\phi_{k}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+III
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ensuremath{\left(\theta,\pi+\phi\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ensuremath{\cos\theta\cos\theta_{k}-\sin\theta\sin\theta_{k}\cos\left(\phi-\phi_{k}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ensuremath{\left(\theta,-\phi\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ensuremath{\cos\theta\cos\theta_{k}+\sin\theta\sin\theta_{k}\cos\left(\phi+\phi_{k}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This implies that
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\Delta\tilde{\mathrm{T}}}{\tilde{\mathrm{T}}}\left(\mathbf{r}\right) & = & 2\sum_{\mathbf{k}}\sqrt{P\left(\mathbf{k}\right)}\left\{ \phi_{1}^{R}\left(\mathbf{k}\right)\cos\left(2\pi n\frac{R}{L}\cos\gamma_{I}\right)-\phi_{1}^{I}\left(\mathbf{k}\right)\sin\left(2\pi n\frac{R}{L}\cos\gamma_{I}\right)\right.\\
+ &  & +\phi_{2}^{R}\left(\mathbf{k}\right)\cos\left(2\pi n\frac{R}{L}\cos\gamma_{II}\right)-\phi_{2}^{I}\left(\mathbf{k}\right)\sin\left(2\pi n\frac{R}{L}\cos\gamma_{II}\right)\\
+ &  & +\phi_{3}^{R}\left(\mathbf{k}\right)\cos\left(2\pi n\frac{R}{L}\cos\gamma_{III}\right)-\phi_{3}^{I}\left(\mathbf{k}\right)\sin\left(2\pi n\frac{R}{L}\cos\gamma_{III}\right)\\
+ &  & \left.+\phi_{4}^{R}\left(\mathbf{k}\right)\cos\left(2\pi n\frac{R}{L}\cos\gamma_{IV}\right)-\phi_{4}^{I}\left(\mathbf{k}\right)\sin\left(2\pi n\frac{R}{L}\cos\gamma_{IV}\right)\right\} .
+\end{eqnarray*}
+
+\end_inset
+
+We will start first with the invariant scale Harrison-Zel'dovich power spectrum:
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathcal{P}(k) & = & Ak^{-3},
+\end{eqnarray*}
+
+\end_inset
+
+ and later, for other geometries.
+\end_layout
+
+\end_body
+\end_document
