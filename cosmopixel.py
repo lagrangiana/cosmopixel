@@ -3,7 +3,7 @@
 #!/usr/bin/env python
 
 __author__ = "Renan Alves de Oliveira, Thiago dos Santos Pereira"
-__license__ = "PSFL"
+__license__ = "CC BY-NC 4.0"
 __version__ = "1.0"
 __maintainer__ = "Renan Alves de Oliveira"
 __email__ = "fisica.renan@gmail.com"
@@ -13,12 +13,8 @@ __email__ = "fisica.renan@gmail.com"
 ##################
 
 import healpy as hp
-from numba import jit
 import numpy as np
-import warnings
-
-# get_ipython().magic('matplotlib inline')
-warnings.filterwarnings('ignore')
+from numba import jit
 
 ################################################################
 # Auxiliary functions - For generate norms, angles and sort it #
@@ -58,8 +54,6 @@ def listanorms(nmax):
     lista = np.array(sorted(lista, key=lambda norm: norm[0])) #Sort generated list in crescent order of sqrt(n).
     return lista
 
-
-@jit
 def unique_rows(a): #This function remove duplicates in the list.
     """
     Function that removes repeated arrays. For more details, check:
@@ -129,10 +123,9 @@ def T(L, A, theta, phi, realization):
         inside_sum.append(2*power*result)    
     return sum(inside_sum)
 
-@jit(nogil = True)
-def thetahp(nside, index):
+def angles(nside):
     """
-    Function that returns Polar angle (theta) for Healpy (hp).
+    Function that returns Polar (theta) and Azimuthal (phi) angles for Healpy (hp).
 
     Args:
         nside (int): NSIDE for Healpy.
@@ -140,24 +133,13 @@ def thetahp(nside, index):
 
     Returns:
         Float number. 
-    """
-    return float(hp.pixelfunc.pix2ang(nside,index)[0])
+    """    
+    angles = np.ones((hp.pixelfunc.nside2npix(nside), 2))
+    for i in range(hp.pixelfunc.nside2npix(nside)):
+        theta, phi = hp.pixelfunc.pix2ang(nside, i)
+        angles[i] = theta, phi
+    return angles
 
-@jit(nogil = True)
-def phihp(nside, index):
-    """
-    Function that returns Azimuthal angle (phi) for Healpy (hp).
-
-    Args:
-        nside (int): NSIDE for Healpy.
-        index (int): Recpective index for each pixel.
-
-    Returns:
-        Float number. 
-    """
-    return float(hp.pixelfunc.pix2ang(nside,index)[1])
-
-@jit(nogil = True)
 def Pixels(nside, L, A):
     """
     Function that returns a Map in the Pixel space.
@@ -169,17 +151,9 @@ def Pixels(nside, L, A):
         
     Returns:
         Array. 
-    """    
-    out_var = [0.]
-    for i in range(0, NoR):
-        var = [0.]
-        for index in range(hp.pixelfunc.nside2npix(nside)):
-            var.append(T(L, A, thetahp(nside,index), phihp(nside,index), i))
-        var = np.array(var[1:])
-        out_var.append(var)
-    return np.array(out_var[1:])
+    """
+    return np.array([[T(L, A, theta, phi, i) for theta, phi in angles(nside)] for i in range(0, NoR)])
 
-@jit(nogil = True)
 def Alms(nside, L, A):
     """
     Alms for Healpy generate maps. Healpy will determine the lmax and mmax based in the value of nside.
@@ -192,11 +166,4 @@ def Alms(nside, L, A):
     Returns:
         Complex array. 
     """
-    out_var = [0.]
-    for i in range(0, NoR):
-        var = [0.]
-        for index in range(hp.pixelfunc.nside2npix(nside)):
-            var.append(T(L, A, thetahp(nside,index), phihp(nside,index), i))
-        var = np.array(var[1:])
-        out_var.append(hp.sphtfunc.map2alm(var))
-    return np.array(out_var[1:])
+    return np.array([hp.map2alm(np.array([T(L, A, theta, phi, i) for theta, phi in angles(nside)])) for i in range(0, NoR)])
